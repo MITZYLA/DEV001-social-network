@@ -1,5 +1,6 @@
 import { Home } from './components/Home.js';
 import { Login } from './components/Login.js';
+import { Muro } from './Components/wall.js';
 
 const rootDiv = document.getElementById('root');
 
@@ -20,6 +21,8 @@ const onNavigate = (pathname) => {
 const routes = {
   '/': Home(onNavigate),  
   '/login': Login(onNavigate),
+  '/muro': Muro(onNavigate),
+
 };
 
 
