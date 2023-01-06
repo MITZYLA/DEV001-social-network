@@ -1,6 +1,6 @@
 export const Muro = (onNavigate) => {
     const muroDiv = document.createElement('div');
-    alert('Bienvenido al muro');
+    //alert('Bienvenido al home');
 return muroDiv;
 };
 

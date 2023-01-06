@@ -1,26 +1,47 @@
+import { getAuth } from "firebase/auth";
 export const Login = (onNavigate) => {
-  const HomeDiv = document.createElement('div');  
-  const buttonHome = document.createElement('button');
+  const LoginDiv = document.createElement('div');  
+  const buttonLogin = document.createElement('button');
   const buttonGoogle = document.createElement('button');
+  const loginEmail = document.createElement('input');
+  const loginPassword = document.createElement('input');
+  
 
-  HomeDiv.textContent = 'Ingresa a nuestra comunidad, y comparte tus ideas y experiencias por una alimentación saludable.';
-  buttonHome.textContent = 'Regresar al Home';
+  LoginDiv.textContent = 'Ingresa a nuestra comunidad, comparte tus ideas y experiencias por una alimentación saludable.';
+  buttonLogin.textContent = 'LOGIN';
   buttonGoogle.textContent = 'Login whith Google';
+  loginEmail.textContent = 'example@yahoo.es';
+  loginPassword.textContent = '********'
 
-  HomeDiv.className = 'loginContent'
-  buttonHome.className = 'buttonHome';
+  loginEmail.placeholder = 'example@yahoo.es';//.placeholder es usado parauna indicacion corta, para input o textarea. texto que aparecera en el input
+  loginEmail.type = 'Email';//.type se usa para indicar el tipo de valor que se ingresara en el input, en este caso es el correo del usuario.
+
+  loginPassword.placeholder = '********';
+  loginPassword.type = 'password';
+
+  LoginDiv.className = 'loginContent';
+  buttonLogin.className = 'buttonLogin';
   buttonGoogle.className = 'buttonGoogle';
+  loginEmail.className = 'loginEmail';
+  loginPassword.className = 'loginPassword';
 
     
+   
 
-
-  buttonHome.addEventListener('click', () => onNavigate('/'));
+  buttonLogin.addEventListener('click', () => onNavigate('/'));
   buttonGoogle.addEventListener('click',() => onNavigate('/login'));
   buttonGoogle.addEventListener('click', () => signIn().then(()=> onNavigate('/muro')));
+ 
 
-  HomeDiv.appendChild(buttonHome,buttonGoogle);//no me funciona ni ctualiza appendchild
+  
 
-  return HomeDiv;
+  LoginDiv.appendChild(buttonLogin);
+  LoginDiv.appendChild(buttonGoogle);
+  LoginDiv.appendChild(loginEmail);
+  LoginDiv.appendChild(loginPassword);
+  return LoginDiv;
 };
 
-P7
+//consultar por que no puedo ponerlo todo en un solo appendchild
+//consultar por que no me refresca la IU
+
