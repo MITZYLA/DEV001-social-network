@@ -15,7 +15,7 @@ export const Home = (onNavigate) => {
   EnterButton.addEventListener('click', () => onNavigate('/login'));
   HomeDiv.appendChild(EnterButton);
   HomeDiv.appendChild(textHome);
-  console.log(HomeDiv)
+  //console.log(HomeDiv)
 
   return HomeDiv;
 };

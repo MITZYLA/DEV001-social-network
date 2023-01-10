@@ -1,6 +1,7 @@
 import { Home } from './components/Home.js';
 import { Login } from './components/Login.js';
-import { Muro } from './Components/wall.js';
+import { Muro } from './components/wall.js';
+//console.log(holas)
 
 
 const rootDiv = document.getElementById('root');

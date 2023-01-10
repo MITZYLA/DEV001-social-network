@@ -1,47 +1,62 @@
-import { getAuth } from "firebase/auth";
+import { signIn } from "../lib/firebase";
+
 export const Login = (onNavigate) => {
-  const LoginDiv = document.createElement('div');  
+  const LoginDiv = document.createElement('div');
+  const textLogin = document.createElement('h1');
   const buttonLogin = document.createElement('button');
   const buttonGoogle = document.createElement('button');
+  const buttonHome = document.createElement('button');
   const loginEmail = document.createElement('input');
   const loginPassword = document.createElement('input');
-  
+  const boxMenu = document.createElement('div');
 
-  LoginDiv.textContent = 'Ingresa a nuestra comunidad, comparte tus ideas y experiencias por una alimentación saludable.';
-  buttonLogin.textContent = 'LOGIN';
-  buttonGoogle.textContent = 'Login whith Google';
+
+  textLogin.textContent = 'Ingresa a nuestra comunidad, comparte tus ideas y experiencias por una alimentación saludable.';
+  buttonLogin.textContent = '_LOGIN_';
+  buttonGoogle.textContent = '______________';
+  buttonHome.textContent = 'Volver al Home'
   loginEmail.textContent = 'example@yahoo.es';
-  loginPassword.textContent = '********'
+  loginPassword.textContent = '********';
 
   loginEmail.placeholder = 'example@yahoo.es';//.placeholder es usado parauna indicacion corta, para input o textarea. texto que aparecera en el input
   loginEmail.type = 'Email';//.type se usa para indicar el tipo de valor que se ingresara en el input, en este caso es el correo del usuario.
-
   loginPassword.placeholder = '********';
   loginPassword.type = 'password';
 
   LoginDiv.className = 'loginContent';
+  textLogin.className = 'textLogin';
+  boxMenu.className = 'cuadroMenu';
   buttonLogin.className = 'buttonLogin';
   buttonGoogle.className = 'buttonGoogle';
   loginEmail.className = 'loginEmail';
   loginPassword.className = 'loginPassword';
 
-    
-   
 
-  buttonLogin.addEventListener('click', () => onNavigate('/'));
-  buttonGoogle.addEventListener('click',() => onNavigate('/login'));
-  buttonGoogle.addEventListener('click', () => signIn().then(()=> onNavigate('/muro')));
- 
+  buttonGoogle.addEventListener('click', () => onNavigate('/muro'));
+  buttonHome.addEventListener('click', () => onNavigate('/'));
 
-  
+  buttonLogin.addEventListener('click', () => {
+    signIn(loginEmail.value, loginPassword.value)
+      .then((user) => onNavigate('/muro'))
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  });
 
-  LoginDiv.appendChild(buttonLogin);
-  LoginDiv.appendChild(buttonGoogle);
-  LoginDiv.appendChild(loginEmail);
-  LoginDiv.appendChild(loginPassword);
+  LoginDiv.appendChild(textLogin);
+  boxMenu.appendChild(loginEmail);
+  boxMenu.appendChild(loginPassword);
+  boxMenu.appendChild(buttonLogin);
+  boxMenu.appendChild(buttonGoogle);
+  LoginDiv.appendChild(boxMenu);
+
+  LoginDiv.appendChild(buttonHome);
+
   return LoginDiv;
+
+
+
+
 };
-
-//consultar por que no puedo ponerlo todo en un solo appendchild
-//consultar por que no me refresca la IU
-

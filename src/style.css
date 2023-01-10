@@ -1,0 +1,92 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    
+  }
+
+body {
+    background-image: url(https://s1.eestatic.com/2020/12/11/actualidad/542707138_167318429_1024x576.jpg);
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; 
+    align-items: center;
+    flex-direction: column;
+             
+      } 
+
+      
+    
+          
+/* es la caja con opacidad que contiene el menu de botones e inputs en la IU*/
+.cuadroMenu {
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #0a0a0a;   
+    border-radius: 20px;
+    width: 180px;
+    height: 300px;
+    
+    
+    
+       
+        
+}
+
+.textLogin {
+    color: rgb(246, 155, 143);
+    font-family: roboto;
+    font-style: italic;
+    font-weight: 800;
+    text-transform: capitalize;
+    font-size: 2.3rem;
+    
+}
+
+
+.buttonLogin {
+    background-color: aliceblue;
+    border-radius: 10px;
+    font-family: roboto;  
+    font-style: italic;
+    text-align: center;
+}
+
+.buttonGoogle {
+    background-color: aliceblue;
+    border-radius: 10px;
+    background-image: url(https://icon-library.com/images/login-with-google-icon/login-with-google-icon-3.jpg);
+    background-size: cover;
+    text-align-last: center;
+    font-family: roboto;
+    
+}
+
+.loginEmail {
+    background-color: aliceblue;
+    border-radius: 10px;
+    text-align: center;
+    font-family: roboto;
+    font-style: italic;
+}
+
+.loginPassword {
+    background-color: aliceblue;
+    border-radius: 10px;
+    text-align: center;
+    font-family: roboto;
+    font-style: italic;
+}
+
+/*estilo para el muro
+#container{
+    display: flex;
+    flex-direction: initial;
+    font-style: italic;
+    font-size: large;
+    font-display: auto;
+    font-family: roboto;
+  }*/
+
