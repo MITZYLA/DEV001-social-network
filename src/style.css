@@ -1,75 +1,75 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
-    
-  }
+    /*@media only screen and (min-width: 600px)*/
+
+}
 
 body {
-    background-image: url(https://s1.eestatic.com/2020/12/11/actualidad/542707138_167318429_1024x576.jpg);
     display: flex;
+    background-image: url(https://s1.eestatic.com/2020/12/11/actualidad/542707138_167318429_1024x576.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed; 
+    background-attachment: fixed;
     align-items: center;
     flex-direction: column;
-             
-      } 
 
-      
-    
-          
-/* es la caja con opacidad que contiene el menu de botones e inputs en la IU*/
+}
+
 .cuadroMenu {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: #0a0a0a;   
+    background-color: #040404ae;
     border-radius: 20px;
     width: 180px;
     height: 300px;
-    
-    
-    
-       
-        
+    margin-top: 6%;
+    margin-left: 10%;
+    margin-right: 100%;
+
 }
 
 .textLogin {
-    color: rgb(246, 155, 143);
+    display: flex;
+    color: rgb(55, 139, 150);
+    -webkit-text-stroke: 1px rgb(142, 184, 229);
     font-family: roboto;
-    font-style: italic;
-    font-weight: 800;
-    text-transform: capitalize;
-    font-size: 2.3rem;
-    
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-left: 10%;
+    margin-right: 100%;
+
+    /* max-width: px;*/
 }
 
-
 .buttonLogin {
-    background-color: aliceblue;
+    background-color: rgb(146, 196, 241);
     border-radius: 10px;
-    font-family: roboto;  
-    font-style: italic;
+    font-family: roboto;
     text-align: center;
+    width: 100px;
+    height: 30px;
 }
 
 .buttonGoogle {
-    background-color: aliceblue;
     border-radius: 10px;
     background-image: url(https://icon-library.com/images/login-with-google-icon/login-with-google-icon-3.jpg);
     background-size: cover;
     text-align-last: center;
-    font-family: roboto;
-    
+    width: 150px;
+    height: 30px;
+
 }
 
 .loginEmail {
-    background-color: aliceblue;
+    background-color: rgb(246, 248, 251);
     border-radius: 10px;
     text-align: center;
     font-family: roboto;
-    font-style: italic;
+    width: 150px;
+    height: 25px;
 }
 
 .loginPassword {
@@ -77,16 +77,40 @@ body {
     border-radius: 10px;
     text-align: center;
     font-family: roboto;
-    font-style: italic;
+    width: 150px;
+    height: 25px;
 }
 
-/*estilo para el muro
-#container{
+.h1 {
     display: flex;
-    flex-direction: initial;
-    font-style: italic;
-    font-size: large;
-    font-display: auto;
+    color: rgb(246, 155, 143);
     font-family: roboto;
-  }*/
+    font-style: italic;
+    text-align: left;
+}
+
+.EnterButton {
+    display: flex;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeAV5P6MRtEP8p1cSDrZP1OVG3SBsYPZ-Diw&usqp=CAU);
+    margin-bottom: 50%;
+    border-radius: 50%;
+}
+
+.textHome {
+    display: flex;
+    color: rgb(55, 139, 150);
+    -webkit-text-stroke: 1px rgb(142, 184, 229);
+    font-family: roboto;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-top: 20%;
+    margin-right: 110%;
+    margin-left: 2%;
+    margin-bottom: 30%;
+}
+
 

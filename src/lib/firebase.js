@@ -1,32 +1,73 @@
+/* eslint-disable spaced-comment */
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+} from 'firebase/firestore';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAbhXAdP485zjZ5dJNyfxh2p31fsKzfBYw",
-  authDomain: "equilibrio-saludable.firebaseapp.com",
-  projectId: "equilibrio-saludable",
-  storageBucket: "equilibrio-saludable.appspot.com",
-  messagingSenderId: "518710435585",
-  appId: "1:518710435585:web:4c9bfcc5ca506b2b9b4500"
+  apiKey: 'AIzaSyAbhXAdP485zjZ5dJNyfxh2p31fsKzfBYw',
+  authDomain: 'equilibrio-saludable.firebaseapp.com',
+  projectId: 'equilibrio-saludable',
+  storageBucket: 'equilibrio-saludable.appspot.com',
+  messagingSenderId: '518710435585',
+  appId: '1:518710435585:web:4c9bfcc5ca506b2b9b4500',
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-/*signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });*/
+const provider = new GoogleAuthProvider();
+const db = getFirestore(app);
 
+// eslint-disable-next-line max-len
+export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password); // función ingreso con correo y contraseña
+export const signInGoogle = (onNavigate) => { // funcion de ingreso con cta google
+  // eslint-disable-next-line arrow-parens, no-unused-vars
+  signInWithPopup(auth, provider).then(result => {
+    onNavigate('/muro');
+  // eslint-disable-next-line arrow-parens
+  }).catch(error => {
+    // eslint-disable-next-line no-console
+    console.log(error);
+  });
+};
 
-export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
+export const addComment = (text, author) => addDoc(collection(db, 'comment'), { // el objeto db es la conección a la base de datos
+  text,
+  author,
+  date: new Date(),
+}); // funcion que lleva los posts a la coleccion de firestore
+
+export const showComments = () => { //funcion que lleva los posts a consola y a interfaz
+  const allComments = query(collection(db, 'comment'));
+  onSnapshot(allComments, (querySnapshot) => {
+    let newComment = '';
+    querySnapshot.forEach((doc) => {
+      const comment = doc.data();
+      // eslint-disable-next-line no-console
+      console.log('el comentario', comment.text);
+      newComment += `
+      <div>
+      <h5> ${comment.author}</h5>
+      <p> ${comment.text}</p>
+      </div>
+      `;
+    });
+    document.getElementById('containerComment').innerHTML = newComment;
+  });
+};

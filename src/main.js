@@ -1,32 +1,29 @@
 import { Home } from './components/Home.js';
 import { Login } from './components/Login.js';
 import { Muro } from './components/wall.js';
-//console.log(holas)
-
 
 const rootDiv = document.getElementById('root');
+let routes = {};
 
 const onNavigate = (pathname) => {
-    window.history.pushState(
-      {},
-      pathname,
-      window.location.origin + pathname,
-    );
-  
-    while (rootDiv.firstChild) {
-      rootDiv.removeChild(rootDiv.firstChild);
-    }
-  
-    rootDiv.appendChild(routes[pathname]);
-  };
+  window.history.pushState(
+    {},
+    pathname,
+    window.location.origin + pathname,
+  );
 
-const routes = {
-  '/': Home(onNavigate),  
-  '/login': Login(onNavigate),
-  '/muro': Muro(onNavigate),
+  while (rootDiv.firstChild) {
+    rootDiv.removeChild(rootDiv.firstChild);
+  }
 
+  rootDiv.appendChild(routes[pathname]);
 };
 
+routes = {
+  '/': Home(onNavigate),
+  '/login': Login(onNavigate),
+  '/muro': Muro(onNavigate),
+};
 
 const component = routes[window.location.pathname];
 

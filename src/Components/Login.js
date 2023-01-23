@@ -1,4 +1,4 @@
-import { signIn } from "../lib/firebase";
+import { signIn, signInGoogle } from '../lib/firebase';
 
 export const Login = (onNavigate) => {
   const LoginDiv = document.createElement('div');
@@ -10,16 +10,15 @@ export const Login = (onNavigate) => {
   const loginPassword = document.createElement('input');
   const boxMenu = document.createElement('div');
 
-
   textLogin.textContent = 'Ingresa a nuestra comunidad, comparte tus ideas y experiencias por una alimentación saludable.';
-  buttonLogin.textContent = '_LOGIN_';
-  buttonGoogle.textContent = '______________';
-  buttonHome.textContent = 'Volver al Home'
+  buttonLogin.textContent = 'LOGIN';
+  buttonGoogle.textContent = '';
+  buttonHome.textContent = 'Volver al Home';
   loginEmail.textContent = 'example@yahoo.es';
   loginPassword.textContent = '********';
 
-  loginEmail.placeholder = 'example@yahoo.es';//.placeholder es usado parauna indicacion corta, para input o textarea. texto que aparecera en el input
-  loginEmail.type = 'Email';//.type se usa para indicar el tipo de valor que se ingresara en el input, en este caso es el correo del usuario.
+  loginEmail.placeholder = 'example@yahoo.es';// .placeholder es usado parauna indicacion corta, para input o textarea. texto que aparecera en el input
+  loginEmail.type = 'Email';// .type se usa para indicar el tipo de valor que se ingresara en el input, en este caso es el correo del usuario.
   loginPassword.placeholder = '********';
   loginPassword.type = 'password';
 
@@ -31,16 +30,25 @@ export const Login = (onNavigate) => {
   loginEmail.className = 'loginEmail';
   loginPassword.className = 'loginPassword';
 
-
-  buttonGoogle.addEventListener('click', () => onNavigate('/muro'));
+  buttonGoogle.addEventListener('click', () => {
+    signInGoogle(onNavigate);
+  });
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
   buttonLogin.addEventListener('click', () => {
     signIn(loginEmail.value, loginPassword.value)
-      .then((user) => onNavigate('/muro'))
+      .then((person) => {
+        // eslint-disable-next-line no-console
+        console.log(person);
+        window.userEmail = person.user.email;
+        loginEmail.value = '';
+        loginPassword.value = '';
+        onNavigate('/muro');
+      })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        // eslint-disable-next-line no-console
         console.log(errorCode, errorMessage);
       });
   });
@@ -55,8 +63,4 @@ export const Login = (onNavigate) => {
   LoginDiv.appendChild(buttonHome);
 
   return LoginDiv;
-
-
-
-
 };

@@ -1,0 +1,60 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    /*@media only screen and (min-width: 600px)*/
+
+}
+
+body {
+    display: flex;
+   
+    background-repeat: round;
+    background-size: contain;
+    align-items: center;
+}
+
+.textoMuro {
+    display: flex;
+    color: rgb(55, 139, 150);
+    -webkit-text-stroke: 1px rgb(142, 184, 229);
+    font-family: roboto;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-left: 10%;
+    margin-right: 100%;
+}
+
+.postBox {
+    display: flex;
+
+
+}
+
+.commenttBox {
+    display: flex;
+    background-color: rgb(246, 248, 251);
+    border-radius: 10px;
+    text-align: center;
+    font-family: roboto;
+    width: 150px;
+    height: 25px;
+    
+}
+
+
+
+#backText {
+    display: flex;
+    color: rgb(55, 139, 150);
+    -webkit-text-stroke: 1px rgb(142, 184, 229);
+    font-family: roboto;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-left: 10%;
+    margin-right: 100%;
+}
+
+#muroContent {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLtqnq-x65jmS099KxywcQJL_OIUdXpZaXveI5X2cLXST7PGladaOPoFgfKbIUbSwQd0k&usqp=CAU);
+}
+

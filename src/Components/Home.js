@@ -1,21 +1,17 @@
 export const Home = (onNavigate) => {
-   
   const HomeDiv = document.createElement('div');
-  const EnterButton= document.createElement('button');
+  const EnterButton = document.createElement('button');
   const textHome = document.createElement('h1');
 
-  HomeDiv.className = "homeContent";
-  EnterButton.className = "EnterButton";
-  textHome.className = "h1";
+  HomeDiv.className = 'homeContent';
+  EnterButton.className = 'EnterButton';
+  textHome.className = 'textHome';
 
-
-  EnterButton.textContent = 'Ingresar';
-  textHome.textContent = 'Bienvenido a Origen saludable';
+  EnterButton.textContent = '';
+  textHome.textContent = 'Bienvenido a Equilibrio saludable';
 
   EnterButton.addEventListener('click', () => onNavigate('/login'));
-  HomeDiv.appendChild(EnterButton);
   HomeDiv.appendChild(textHome);
-  //console.log(HomeDiv)
-
+  HomeDiv.appendChild(EnterButton);
   return HomeDiv;
 };
