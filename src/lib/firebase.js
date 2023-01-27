@@ -63,7 +63,8 @@ export const showComments = () => { //funcion que lleva los posts a consola IU y
   onSnapshot(allComments, (querySnapshot) => {
     querySnapshot.forEach((docum) => {
       const comment = docum.data();
-     console.log(docum.data());
+      // eslint-disable-next-line no-console
+      console.log(docum.data());
       // eslint-disable-next-line no-console
       console.log('el comentario', comment.text);
       newComment += `
@@ -74,12 +75,10 @@ export const showComments = () => { //funcion que lleva los posts a consola IU y
       </div>
       `;
     });
-    // document.getElementById('postsPrints').innerHTML = newComment;
-  console.log(newComment);
-    
+    document.getElementById('postsPrints').innerHTML = newComment;
+    // eslint-disable-next-line no-console
+    console.log(newComment);
   });
   return (newComment);
 };
-
-
 export const deleteComment = (id) => deleteDoc(doc(db, 'comment', id));

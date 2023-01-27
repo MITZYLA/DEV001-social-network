@@ -55,10 +55,14 @@ export const Muro = (onNavigate) => {
       console.error(error);
     });
   });
-console.log(showComments());
-  newCommentBox.innerHTML = showComments();
-  muroDiv.querySelectorAll('.btnDelete').forEach((button) => {
+  // eslint-disable-next-line no-console
+  console.log(showComments());
+console.log(newCommentBox);
+  newCommentBox.querySelectorAll('.btnDelete').forEach((button) => {
+    console.log(button);
     button.addEventListener('click', (e) => {
+      console.log('holas');
+      // eslint-disable-next-line no-console
       e.preventDefault();
       deleteComment(button.dataset.id);
     });
