@@ -13,6 +13,8 @@ import {
   addDoc,
   onSnapshot,
   query,
+  //deleteDoc,
+  //doc,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -30,7 +32,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
 
@@ -47,27 +49,32 @@ export const signInGoogle = (onNavigate) => { // funcion de ingreso con cta goog
   });
 };
 
-export const addComment = (text, author) => addDoc(collection(db, 'comment'), { // el objeto db es la conección a la base de datos
-  text,
-  author,
-  date: new Date(),
-}); // funcion que lleva los posts a la coleccion de firestore
+export const addComment = (text, author) => {
+  addDoc(collection(db, 'comment'), { // el objeto db es la conección a la base de datos
+    text,
+    author,
+    date: new Date(),
+  });
+}; // funcion que lleva los posts a la coleccion de firestore
 
-export const showComments = () => { //funcion que lleva los posts a consola y a interfaz
+export const showComments = () => { //funcion que lleva los posts a consola IU y a IU.
   const allComments = query(collection(db, 'comment'));
   onSnapshot(allComments, (querySnapshot) => {
     let newComment = '';
-    querySnapshot.forEach((doc) => {
-      const comment = doc.data();
+    querySnapshot.forEach((docum) => {
+      const comment = docum.data();
       // eslint-disable-next-line no-console
       console.log('el comentario', comment.text);
       newComment += `
-      <div>
+      <div class="comment">
       <h5> ${comment.author}</h5>
       <p> ${comment.text}</p>
+      <button>Eliminar</button>
       </div>
       `;
     });
-    document.getElementById('containerComment').innerHTML = newComment;
+    document.getElementById('postsPrints').innerHTML = newComment;
   });
 };
+
+// export const deleteComment = (id) => deleteDoc(doc(db, 'comment', id));

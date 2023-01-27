@@ -1,60 +1,100 @@
 * {
     margin: 0px;
-    padding: 0px;
-    /*@media only screen and (min-width: 600px)*/
-
+    
 }
 
-body {
+/*caja de comentarios guardados*/
+#postsPrints {
+    display: flex;  
+    flex-direction: column;  
+    border-radius: 10px;
+    font-family: roboto;
+    width: 300px;
+    height: 100%;
+    gap: 10px;
+}
+
+.comment {
+    background-color: rgb(245, 188, 75);
+}
+
+h5 {
+    font-size: small;
+    height: 50%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: black;
+    
+}
+
+p {
+    font-size: 50%;
+    height: 50%;
+    letter-spacing: 2px;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: rgb(245, 188, 75);  
+    color: black; 
+    
+}
+/*caja para escribir comentarios*/
+#commentBox {
     display: flex;
-   
-    background-repeat: round;
-    background-size: contain;
-    align-items: center;
+    background-color: rgb(237, 201, 128);
+    border-radius: 5px;
+    text-align: center;
+    font-family: roboto;
+    width: 350px;
+    height: 100px;
+    font-size: larger;
+    
+    
 }
 
+/*boton cierre de sesión*/
+#signOutButton {
+    display: flex;  
+    color: coral;
+    background-color: black;
+    width: 70px;
+    height: 35px;
+    border-radius: 20%;
+    font-family: roboto;
+    margin-left: 50%;
+    margin-top: 400%;
+    margin-bottom: 0px;
+}
+
+/*boton publicar*/
+.enterPost {
+    display: flex;
+    border-color: black;
+    color: rgb(10, 10, 10);
+    font-weight: 900;
+    background-color: rgb(241, 132, 22);
+    width: 80px;
+    height: 30px;
+    border-radius: 20%;
+    font-family: roboto;
+    align-items: center;
+   
+    
+ 
+}
+/*texto de fondo de muro*/
 .textoMuro {
     display: flex;
     color: rgb(55, 139, 150);
     -webkit-text-stroke: 1px rgb(142, 184, 229);
     font-family: roboto;
     font-weight: 700;
-    font-size: 2.8rem;
-    margin-left: 10%;
-    margin-right: 100%;
-}
-
-.postBox {
-    display: flex;
-
-
-}
-
-.commenttBox {
-    display: flex;
-    background-color: rgb(246, 248, 251);
-    border-radius: 10px;
-    text-align: center;
-    font-family: roboto;
-    width: 150px;
-    height: 25px;
+    font-size: 3rem;
+    margin-left: 1%;
+    margin-right: 60%;
+    flex-direction: column;
+    justify-content: center;
     
-}
-
-
-
-#backText {
-    display: flex;
-    color: rgb(55, 139, 150);
-    -webkit-text-stroke: 1px rgb(142, 184, 229);
-    font-family: roboto;
-    font-weight: 700;
-    font-size: 2.8rem;
-    margin-left: 10%;
-    margin-right: 100%;
-}
-
-#muroContent {
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLtqnq-x65jmS099KxywcQJL_OIUdXpZaXveI5X2cLXST7PGladaOPoFgfKbIUbSwQd0k&usqp=CAU);
 }
 
