@@ -13,8 +13,8 @@ import {
   addDoc,
   onSnapshot,
   query,
-  //deleteDoc,
-  //doc,
+  deleteDoc,
+  doc,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -59,10 +59,11 @@ export const addComment = (text, author) => {
 
 export const showComments = () => { //funcion que lleva los posts a consola IU y a IU.
   const allComments = query(collection(db, 'comment'));
+  let newComment = '';
   onSnapshot(allComments, (querySnapshot) => {
-    let newComment = '';
     querySnapshot.forEach((docum) => {
       const comment = docum.data();
+     console.log(docum.data());
       // eslint-disable-next-line no-console
       console.log('el comentario', comment.text);
       newComment += `
@@ -73,8 +74,12 @@ export const showComments = () => { //funcion que lleva los posts a consola IU y
       </div>
       `;
     });
-    document.getElementById('postsPrints').innerHTML = newComment;
+    // document.getElementById('postsPrints').innerHTML = newComment;
+  console.log(newComment);
+    
   });
+  return (newComment);
 };
 
-// export const deleteComment = (id) => deleteDoc(doc(db, 'comment', id));
+
+export const deleteComment = (id) => deleteDoc(doc(db, 'comment', id));

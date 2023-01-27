@@ -1,5 +1,10 @@
 import { signOut } from 'firebase/auth';
-import { addComment, showComments, auth } from '../lib/firebase';
+import {
+  addComment,
+  showComments,
+  auth,
+  deleteComment,
+} from '../lib/firebase';
 
 // eslint-disable-next-line no-unused-vars
 export const Muro = (onNavigate) => {
@@ -10,7 +15,7 @@ export const Muro = (onNavigate) => {
   const commentBox = document.createElement('textarea');
   const postButton = document.createElement('button');
   const signOutButton = document.createElement('button');
-  // const btnDelete = document.createElement('button');
+  const btnDelete = document.createElement('button');
   newCommentBox.setAttribute('id', 'containerComment'); // se agrega un atributo de clase a un elemento element.setAttribute(name, value)
 
   wallMenu.textContent = 'EXPERIENCIAS Y COMENTARIOS';
@@ -24,7 +29,7 @@ export const Muro = (onNavigate) => {
   muroDiv.className = 'wallCont';
   postButton.className = 'enterPost';
   wallMenu.className = 'textoMuro';
-  // btnDelete.className = 'btnDelete';
+  btnDelete.className = 'btnDelete';
 
   muroDiv.appendChild(wallMenu);
   muroDiv.appendChild(commentBox);
@@ -32,7 +37,7 @@ export const Muro = (onNavigate) => {
   muroDiv.appendChild(postBox);
   muroDiv.appendChild(newCommentBox);
   muroDiv.appendChild(signOutButton);
-  // newCommentBox.appendChild(btnDelete);
+  newCommentBox.appendChild(btnDelete);
   // eslint-disable-next-line no-console
   console.log(muroDiv);
   postButton.addEventListener('click', (event) => {
@@ -40,7 +45,6 @@ export const Muro = (onNavigate) => {
     addComment(commentBox.value, auth.currentUser.email);
     // eslint-disable-next-line no-console
     console.log(commentBox.value);
-    showComments();
   });
 
   signOutButton.addEventListener('click', () => {
@@ -49,6 +53,14 @@ export const Muro = (onNavigate) => {
     }).catch((error) => {
       // eslint-disable-next-line no-console
       console.error(error);
+    });
+  });
+console.log(showComments());
+  newCommentBox.innerHTML = showComments();
+  muroDiv.querySelectorAll('.btnDelete').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      deleteComment(button.dataset.id);
     });
   });
 
