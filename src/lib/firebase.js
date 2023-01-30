@@ -34,7 +34,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 // eslint-disable-next-line max-len
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password); // función ingreso con correo y contraseña
@@ -57,28 +57,4 @@ export const addComment = (text, author) => {
   });
 }; // funcion que lleva los posts a la coleccion de firestore
 
-export const showComments = () => { //funcion que lleva los posts a consola IU y a IU.
-  const allComments = query(collection(db, 'comment'));
-  let newComment = '';
-  onSnapshot(allComments, (querySnapshot) => {
-    querySnapshot.forEach((docum) => {
-      const comment = docum.data();
-      // eslint-disable-next-line no-console
-      console.log(docum.data());
-      // eslint-disable-next-line no-console
-      console.log('el comentario', comment.text);
-      newComment += `
-      <div class="comment">
-      <h5> ${comment.author}</h5>
-      <p> ${comment.text}</p>
-      <button>Eliminar</button>
-      </div>
-      `;
-    });
-    document.getElementById('postsPrints').innerHTML = newComment;
-    // eslint-disable-next-line no-console
-    console.log(newComment);
-  });
-  return (newComment);
-};
 export const deleteComment = (id) => deleteDoc(doc(db, 'comment', id));
