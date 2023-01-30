@@ -38,7 +38,6 @@ export const Muro = (onNavigate) => {
   muroDiv.appendChild(postBox);
   muroDiv.appendChild(newCommentBox);
   muroDiv.appendChild(signOutButton);
-  newCommentBox.appendChild(btnDelete);
 
   const q = query(collection(db, 'comment'));
   getDocs(q).then((querySnapshot) => {
@@ -56,6 +55,7 @@ export const Muro = (onNavigate) => {
 
   onSnapshot(q, (querySnapshot) => {
     let newComment = '';
+    const postsPrints = document.getElementById('postsPrints');
     querySnapshot.forEach((docum) => {
       const comment = docum.data();
       newComment += `
@@ -66,7 +66,15 @@ export const Muro = (onNavigate) => {
       </div>
       `;
     });
-    document.getElementById('postsPrints').innerHTML = newComment;
+    postsPrints.innerHTML = newComment;
+    for (let i = 0; i < postsPrints.children.length; i++) {
+      const button = postsPrints.children[i].lastElementChild;
+      button.addEventListener('click', (e) => {
+        console.log('holas');
+        // eslint-disable-next-line no-console
+        e.preventDefault();
+      });
+    }
   });
 
   postButton.addEventListener('click', (event) => {
@@ -74,25 +82,6 @@ export const Muro = (onNavigate) => {
     addComment(commentBox.value, auth.currentUser.email);
     // eslint-disable-next-line no-console
     console.log(commentBox.value);
-  });
-
-  signOutButton.addEventListener('click', () => {
-    signOut(auth).then(() => {
-      onNavigate('/');
-    }).catch((error) => {
-      // eslint-disable-next-line no-console
-      console.error(error);
-    });
-  });
-  // eslint-disable-next-line no-console
-  newCommentBox.querySelectorAll('.btnDelete').forEach((button) => {
-    console.log(button);
-    button.addEventListener('click', (e) => {
-      console.log('holas');
-      // eslint-disable-next-line no-console
-      e.preventDefault();
-      deleteComment(button.dataset.id);
-    });
   });
 
   return muroDiv;
