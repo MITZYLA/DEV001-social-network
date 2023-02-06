@@ -1,13 +1,15 @@
+@media screen and (max-width: 800px) {
+
 * {
     margin: 0px;
-    padding: 0px;
-    
+    padding: 0px; 
 } 
+}
 
 body {
     display: flex;
     background-image: url(https://s1.eestatic.com/2020/12/11/actualidad/542707138_167318429_1024x576.jpg);
-    background-repeat: no-repeat;
+    background-repeat: round;
     background-size: cover;
     background-attachment: fixed;
     align-items: center;
@@ -15,6 +17,33 @@ body {
     vertical-align: top;
 }
 
+.EnterButton {
+    display: flex;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeAV5P6MRtEP8p1cSDrZP1OVG3SBsYPZ-Diw&usqp=CAU);
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    border-radius: 50%;
+    border-width: 10px;
+    margin-left: 4%;
+    border-color: rgba(123, 241, 4, 0.984);
+}
+
+.textHome {
+    display: flex;
+    color: rgb(123, 241, 4, 0.984);
+    -webkit-text-stroke: 1px rgb(187, 247, 127, 0.984);
+    font-family: roboto;
+    font-weight: 700;
+    font-size: 3rem;
+    margin-top: 10%;
+    margin-right: 110%;
+    margin-left: 0%;
+    margin-bottom: 20%;
+}
+
+/*CUADRO DE MENU LOGIN*/
 .cuadroMenu {
     display: flex;
     flex-direction: column;
@@ -22,8 +51,8 @@ body {
     justify-content: space-evenly;
     background-color: #040404ae;
     border-radius: 20px;
-    width: 180px;
-    height: 300px;
+    width: 250px;
+    height: 400px;
     margin-top: 6%;
     margin-left: 10%;
     margin-right: 100%;
@@ -31,14 +60,13 @@ body {
 
 .textLogin {
     display: flex;
-    color: rgb(55, 139, 150);
-    -webkit-text-stroke: 1px rgb(142, 184, 229);
+    color: rgb(123, 241, 4, 0.984);
+    -webkit-text-stroke: 1px rgba(187, 247, 127, 0.984);
     font-family: roboto;
     font-weight: 700;
     font-size: 2.8rem;
     margin-left: 10%;
     margin-right: 100%;
-    /* max-width: px;*/
 }
 
 .buttonLogin {
@@ -57,6 +85,16 @@ body {
     text-align-last: center;
     width: 150px;
     height: 30px;
+}
+
+.backButton {
+    display: flex;
+    border-radius: 20px;
+    background-color: rgb(146, 196, 241);
+    text-align: center;
+    font-family: roboto;
+    width: 100px;
+    height: 22px;   
 }
 
 .loginEmail {
@@ -83,28 +121,4 @@ body {
     font-family: roboto;
     font-style: italic;
     text-align: left;
-}
-
-.EnterButton {
-    display: flex;
-    border-radius: 10px;
-    width: 200px;
-    height: 200px;
-    background-size: cover;
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeAV5P6MRtEP8p1cSDrZP1OVG3SBsYPZ-Diw&usqp=CAU);
-    margin-bottom: 50%;
-    border-radius: 50%;
-}
-
-.textHome {
-    display: flex;
-    color: rgb(55, 139, 150);
-    -webkit-text-stroke: 1px rgb(142, 184, 229);
-    font-family: roboto;
-    font-weight: 700;
-    font-size: 2.8rem;
-    margin-top: 20%;
-    margin-right: 110%;
-    margin-left: 2%;
-    margin-bottom: 30%;
 }

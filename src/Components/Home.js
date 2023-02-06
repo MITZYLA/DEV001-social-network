@@ -8,7 +8,7 @@ export const Home = (onNavigate) => {
   textHome.className = 'textHome';
 
   EnterButton.textContent = '';
-  textHome.textContent = 'Bienvenido a Equilibrio saludable';
+  textHome.textContent = 'BIENVENIDO A EQUILIBRIO SALUDABLE';
 
   EnterButton.addEventListener('click', () => onNavigate('/login'));
   HomeDiv.appendChild(textHome);

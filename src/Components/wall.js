@@ -1,5 +1,10 @@
 import { signOut } from 'firebase/auth';
-import { query, collection, getDocs, onSnapshot } from 'firebase/firestore'
+import {
+  query,
+  collection,
+  onSnapshot,
+} from 'firebase/firestore';
+
 import {
   addComment,
   auth,
@@ -16,11 +21,10 @@ export const Muro = (onNavigate) => {
   const commentBox = document.createElement('textarea');
   const postButton = document.createElement('button');
   const signOutButton = document.createElement('button');
-  const btnDelete = document.createElement('button');
   newCommentBox.setAttribute('id', 'containerComment'); // se agrega un atributo de clase a un elemento element.setAttribute(name, value)
 
   wallMenu.textContent = 'EXPERIENCIAS Y COMENTARIOS';
-  postButton.textContent = 'PUBLICAR';
+  postButton.textContent = 'Publicar';
   signOutButton.textContent = 'CERRAR SESIÓN';
 
   newCommentBox.id = 'postsPrints';
@@ -30,7 +34,6 @@ export const Muro = (onNavigate) => {
   muroDiv.className = 'wallCont';
   postButton.className = 'enterPost';
   wallMenu.className = 'textoMuro';
-  btnDelete.className = 'btnDelete';
 
   muroDiv.appendChild(wallMenu);
   muroDiv.appendChild(commentBox);
@@ -40,18 +43,6 @@ export const Muro = (onNavigate) => {
   muroDiv.appendChild(signOutButton);
 
   const q = query(collection(db, 'comment'));
-  getDocs(q).then((querySnapshot) => {
-    querySnapshot.forEach((docum) => {
-      const comment = docum.data();
-      newCommentBox.innerHTML += `
-      <div class="comment">
-      <h5> ${comment.author}</h5>
-      <p> ${comment.text}</p>
-      <button>Eliminar</button>
-      </div>
-      `;
-    });
-  });
 
   onSnapshot(q, (querySnapshot) => {
     let newComment = '';
@@ -59,22 +50,27 @@ export const Muro = (onNavigate) => {
     querySnapshot.forEach((docum) => {
       const comment = docum.data();
       newComment += `
-      <div class="comment">
+      <div class='comment'>
       <h5> ${comment.author}</h5>
       <p> ${comment.text}</p>
-      <button>Eliminar</button>
+      <button class='btnEliminar' data-doc-id="${docum.id}" id="${docum.id}-eliminar"  type='button'>Eliminar</button>
       </div>
       `;
     });
     postsPrints.innerHTML = newComment;
-    for (let i = 0; i < postsPrints.children.length; i++) {
-      const button = postsPrints.children[i].lastElementChild;
-      button.addEventListener('click', (e) => {
-        console.log('holas');
-        // eslint-disable-next-line no-console
-        e.preventDefault();
-      });
-    }
+    const btnsDelete = newCommentBox.querySelectorAll('.btnEliminar');
+    btnsDelete.forEach((btn) => {
+      btn.addEventListener('click', ({ target: { dataset } }) => deleteComment(dataset.docId));
+    });
+
+    /* for (let i = 0; i < postsPrints.children.length; i++) {
+       const button = postsPrints.children[i].lastElementChild;
+       button.addEventListener('click', (e) => {
+         // eslint-disable-next-line no-console
+         // eslint-disable-next-line no-console
+         e.preventDefault();
+       });
+     } */
   });
 
   postButton.addEventListener('click', (event) => {
@@ -82,6 +78,15 @@ export const Muro = (onNavigate) => {
     addComment(commentBox.value, auth.currentUser.email);
     // eslint-disable-next-line no-console
     console.log(commentBox.value);
+  });
+
+  signOutButton.addEventListener('click', () => {
+    signOut(auth).then(() => {
+      onNavigate('/');
+    }).catch((error) => {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    });
   });
 
   return muroDiv;

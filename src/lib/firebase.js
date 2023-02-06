@@ -11,8 +11,6 @@ import {
   getFirestore,
   collection,
   addDoc,
-  onSnapshot,
-  query,
   deleteDoc,
   doc,
 } from 'firebase/firestore';

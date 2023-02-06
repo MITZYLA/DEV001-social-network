@@ -1,70 +1,34 @@
 * {
     margin: 0px;
-    
+    padding: 0px;
 }
 
-/*caja de comentarios guardados*/
-#postsPrints {
-    display: flex;  
-    flex-direction: column;  
-    border-radius: 10px;
+/*texto de fondo de muro*/
+.textoMuro {
+    display: flex;
+    color: rgb(123, 241, 4, 0.984);
+    -webkit-text-stroke: 1px rgba(187, 247, 127, 0.984);
     font-family: roboto;
-    width: 300px;
-    height: 100%;
-    gap: 10px;
+    font-weight: 700;
+    font-size: 3rem;
+    margin-top: 10%;
+    margin-left: 0%;
+    margin-right: 70%;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.comment {
-    background-color: rgb(245, 188, 75);
-}
-
-h5 {
-    font-size: small;
-    height: 50%;
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
-    color: black;
-    
-}
-
-p {
-    font-size: 50%;
-    height: 50%;
-    letter-spacing: 2px;
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
-    background-color: rgb(245, 188, 75);  
-    color: black; 
-    
-}
 /*caja para escribir comentarios*/
 #commentBox {
     display: flex;
-    background-color: rgb(237, 201, 128);
+    margin-top: 10%;
+    background-color: rgb(243, 192, 92);
     border-radius: 5px;
     text-align: center;
     font-family: roboto;
     width: 350px;
-    height: 100px;
-    font-size: larger;
-    
-    
-}
-
-/*boton cierre de sesión*/
-#signOutButton {
-    display: flex;  
-    color: coral;
-    background-color: black;
-    width: 70px;
-    height: 35px;
-    border-radius: 20%;
-    font-family: roboto;
-    margin-left: 50%;
-    margin-top: 400%;
-    margin-bottom: 0px;
+    height: 150px;
+    font-size: larger;   
 }
 
 /*boton publicar*/
@@ -72,29 +36,83 @@ p {
     display: flex;
     border-color: black;
     color: rgb(10, 10, 10);
-    font-weight: 900;
-    background-color: rgb(241, 132, 22);
-    width: 80px;
-    height: 30px;
-    border-radius: 20%;
-    font-family: roboto;
+    background-color: coral;
+    font-display: flex;
+    font-weight: 10%;
     align-items: center;
-   
-    
- 
-}
-/*texto de fondo de muro*/
-.textoMuro {
-    display: flex;
-    color: rgb(55, 139, 150);
-    -webkit-text-stroke: 1px rgb(142, 184, 229);
+    width: 55px;
+    height: 30px;
+    font-weight: 800;
+    border-radius: 45%;
     font-family: roboto;
-    font-weight: 700;
-    font-size: 3rem;
-    margin-left: 1%;
-    margin-right: 60%;
-    flex-direction: column;
-    justify-content: center;
-    
+    margin-left: 35%;
 }
 
+/*le da solo el color al cuadro de comentarios al espacio delusuario/correo*/
+.comment {
+    background-color: rgb(243, 192, 92);
+    font-size: medium;
+}
+
+h5 {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: black;
+}
+
+p {
+    font-size: medium;
+    letter-spacing: 1px;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: rgb(243, 192, 92);  
+    color: black; 
+}
+
+/*caja de comentarios guardados*/
+#postsPrints {
+    display: flex;  
+    margin-top: 12%;
+    
+    flex-direction: column;  
+    border-radius: 10px;
+    font-family: roboto;
+    width: 500px;
+    height: 100%;
+    gap: 20px;
+}
+
+.btnEliminar {
+    display: flex;
+    border-color: black;
+    color: rgb(10, 10, 10);
+    background-color: coral;
+    font-display: flex;
+    font-weight: 10%;
+    align-items: center;
+    width: 55px;
+    height: 30px;
+    font-weight: 800;
+    border-radius: 45%;
+    font-family: roboto;   
+    margin-left: 87%;  
+}
+
+/*boton cierre de sesión*/
+#signOutButton {
+    display: flex;  
+    color: black;
+    background-color: coral;
+    border-color: black;
+    width: 70px;
+    height: 35px;
+    border-radius: 50%;
+    font-family: roboto;
+    font-size: x-small;
+    align-items: center;
+    margin-left: 0%;
+    margin-top: 0%;
+    margin-bottom: 100%;
+}

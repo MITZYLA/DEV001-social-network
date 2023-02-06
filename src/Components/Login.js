@@ -14,10 +14,10 @@ export const Login = (onNavigate) => {
   buttonLogin.textContent = 'LOGIN';
   buttonGoogle.textContent = '';
   buttonHome.textContent = 'Volver al Home';
-  loginEmail.textContent = 'example@yahoo.es';
+  loginEmail.textContent = 'example@email.es';
   loginPassword.textContent = '********';
 
-  loginEmail.placeholder = 'example@yahoo.es';// .placeholder es usado parauna indicacion corta, para input o textarea. texto que aparecera en el input
+  loginEmail.placeholder = 'example@yahoo.es';// .placeholder es usado para una indicacion corta, para input o textarea. texto que aparecera en el input
   loginEmail.type = 'Email';// .type se usa para indicar el tipo de valor que se ingresara en el input, en este caso es el correo del usuario.
   loginPassword.placeholder = '********';
   loginPassword.type = 'password';
@@ -29,6 +29,7 @@ export const Login = (onNavigate) => {
   buttonGoogle.className = 'buttonGoogle';
   loginEmail.className = 'loginEmail';
   loginPassword.className = 'loginPassword';
+  buttonHome.className = 'backButton';
 
   buttonGoogle.addEventListener('click', () => {
     signInGoogle(onNavigate);
@@ -58,9 +59,7 @@ export const Login = (onNavigate) => {
   boxMenu.appendChild(loginPassword);
   boxMenu.appendChild(buttonLogin);
   boxMenu.appendChild(buttonGoogle);
+  boxMenu.appendChild(buttonHome);
   LoginDiv.appendChild(boxMenu);
-
-  LoginDiv.appendChild(buttonHome);
-
   return LoginDiv;
 };
