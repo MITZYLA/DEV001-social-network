@@ -53,7 +53,7 @@ export const Muro = (onNavigate) => {
       <div class='comment'>
       <h5> ${comment.author}</h5>
       <p> ${comment.text}</p>
-      <button class='btnEliminar' data-doc-id="${docum.id}" id="${docum.id}-eliminar"  type='button'>Eliminar</button>
+      <button class='btnEliminar' data-doc-id="${docum.id}" id="${docum.id}-Eliminar"  type='button'>Eliminar</button>
       </div>
       `;
     });
@@ -62,15 +62,6 @@ export const Muro = (onNavigate) => {
     btnsDelete.forEach((btn) => {
       btn.addEventListener('click', ({ target: { dataset } }) => deleteComment(dataset.docId));
     });
-
-    /* for (let i = 0; i < postsPrints.children.length; i++) {
-       const button = postsPrints.children[i].lastElementChild;
-       button.addEventListener('click', (e) => {
-         // eslint-disable-next-line no-console
-         // eslint-disable-next-line no-console
-         e.preventDefault();
-       });
-     } */
   });
 
   postButton.addEventListener('click', (event) => {
